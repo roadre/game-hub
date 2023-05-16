@@ -1,20 +1,9 @@
 import React, { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
-
 import { iGame, iFetchGamesResponse } from "../services/rawg";
+import useGames from "../hooks/useGames";
 
 const GameGrid = () => {
-    const [games, setGames] = useState<iGame[]>([]);
-    const [error, setError] = useState("");
-
-    useEffect(() => {
-        apiClient
-            .get<iFetchGamesResponse>("/games")
-            .then((res) => {
-                setGames(res.data.results);
-            })
-            .catch((err) => setError(err.message));
-    }, []);
+    const { games, error } = useGames();
 
     return (
         <>
