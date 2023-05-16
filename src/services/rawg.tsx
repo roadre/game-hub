@@ -20,6 +20,19 @@ interface iGame {
     metacritic: number;
 }
 
+interface iGenres {
+    id: number;
+    name: string;
+    background_image: string;
+    parent_platforms: { platform: iPlatform }[];
+    metacritic: number;
+}
+
+interface iFetchGeneresResponse {
+    count: number;
+    results: iGenres[];
+}
+
 interface iFetchGamesResponse {
     count: number;
     results: iGame[];
@@ -38,4 +51,10 @@ const createRawgClient = (endpoint: string) => {
 
 export default { createRawgClient };
 
-export type { iGame, iFetchGamesResponse, iPlatform };
+export type {
+    iGame,
+    iFetchGamesResponse,
+    iGenres,
+    iFetchGeneresResponse,
+    iPlatform,
+};

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import apiClient from "../services/api-client";
 import { Text } from "@chakra-ui/react";
-import { iGame, iFetchGamesResponse } from "../services/rawg";
+import { iGenres, iFetchGeneresResponse } from "../services/rawg";
 import { CanceledError } from "axios";
 
-const useGames = () => {
-    const [games, setGames] = useState<iGame[]>([]);
+const useGenres = () => {
+    const [Genres, setGenres] = useState<iGenres[]>([]);
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
@@ -16,11 +16,11 @@ const useGames = () => {
         setIsLoading(true);
 
         apiClient
-            .get<iFetchGamesResponse>("/games", {
+            .get<iFetchGeneresResponse>("/genres", {
                 signal: controller.signal,
             })
             .then((res) => {
-                setGames(res.data.results);
+                setGenres(res.data.results);
                 setIsLoading(false);
             })
             .catch((err) => {
@@ -34,7 +34,7 @@ const useGames = () => {
         };
     }, []);
 
-    return { games, error, isLoading };
+    return { Genres, error, isLoading };
 };
 
-export default useGames;
+export default useGenres;
