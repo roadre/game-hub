@@ -6,10 +6,17 @@
 
 import apiClient from "./api-client";
 
+interface iPlatform {
+    id: number;
+    name: string;
+    slug: string;
+}
+
 interface iGame {
     id: number;
     name: string;
     background_image: string;
+    parent_platforms: { platform: iPlatform }[];
 }
 
 interface iFetchGamesResponse {
@@ -30,4 +37,4 @@ const createRawgClient = (endpoint: string) => {
 
 export default { createRawgClient };
 
-export type { iGame, iFetchGamesResponse };
+export type { iGame, iFetchGamesResponse, iPlatform };
