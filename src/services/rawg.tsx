@@ -9,6 +9,7 @@ import apiClient from "./api-client";
 interface iGame {
     id: number;
     name: string;
+    background_image: string;
 }
 
 interface iFetchGamesResponse {

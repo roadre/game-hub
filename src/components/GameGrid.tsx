@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { iGame, iFetchGamesResponse } from "../services/rawg";
 import useGames from "../hooks/useGames";
+import { SimpleGrid } from "@chakra-ui/react";
+import { GameCard } from "./GameCard";
 
 const GameGrid = () => {
     const { games, error } = useGames();
@@ -8,14 +10,12 @@ const GameGrid = () => {
     return (
         <>
             {error && <p className="text-danger">{error}</p>}
-            <div>
+            <SimpleGrid columns={{ sm: 1, md: 2, lg: 4 }} spacing={15}>
                 <h1>List</h1>
-                <ul>
-                    {games.map((game) => (
-                        <li key={game.id}>{game.name}</li>
-                    ))}
-                </ul>
-            </div>
+                {games.map((game) => (
+                    <GameCard key={game.id} game={game}></GameCard>
+                ))}
+            </SimpleGrid>
         </>
     );
 };
