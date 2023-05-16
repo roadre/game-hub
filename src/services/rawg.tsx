@@ -17,6 +17,7 @@ interface iGame {
     name: string;
     background_image: string;
     parent_platforms: { platform: iPlatform }[];
+    metacritic: number;
 }
 
 interface iFetchGamesResponse {
