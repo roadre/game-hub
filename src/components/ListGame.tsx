@@ -4,7 +4,7 @@ import { GameCard } from "./GameCard";
 import GameCardPlaceholder from "./GameCardPlaceholder";
 import GameCardContainer from "./GameCardContainer";
 
-const GameGrid = () => {
+const ListGame = () => {
     const { data, error, isLoading } = useGames();
     const skeletons = [1, 2, 3, 4, 5, 6];
 
@@ -28,4 +28,4 @@ const GameGrid = () => {
     );
 };
 
-export default GameGrid;
+export default ListGame;

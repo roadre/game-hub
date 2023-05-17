@@ -3,7 +3,7 @@ import useGenre from "../hooks/useGenre";
 
 type Props = {};
 
-const GenreList = (props: Props) => {
+const ListGenre = (props: Props) => {
     const { data, isLoading, error } = useGenre();
 
     if (isLoading) return <Spinner />;
@@ -28,4 +28,4 @@ const GenreList = (props: Props) => {
     );
 };
 
-export default GenreList;
+export default ListGenre;
