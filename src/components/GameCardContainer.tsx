@@ -5,7 +5,7 @@ type Props = { children: ReactNode };
 
 const GameCardContainer = ({ children }: Props) => {
     return (
-        <Box width="300px" padding={2} borderRadius={10} overflow="hidden">
+        <Box padding={2} borderRadius={10} overflow="hidden">
             {children}
         </Box>
     );

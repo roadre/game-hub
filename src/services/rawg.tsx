@@ -23,9 +23,9 @@ interface iGame {
 interface iGenre {
     id: number;
     name: string;
-    background_image: string;
     parent_platforms: { platform: iPlatform }[];
     metacritic: number;
+    image_background: string;
 }
 
 interface iFetchGenresResponse {

@@ -1,3 +1,4 @@
+import { Text, Image, HStack, List, ListItem } from "@chakra-ui/react";
 import useGenre from "../hooks/useGenre";
 
 type Props = {};
@@ -6,11 +7,20 @@ const GenreList = (props: Props) => {
     const { data } = useGenre();
 
     return (
-        <ul>
+        <List>
             {data.map((genre) => (
-                <li key={genre.id}>{genre.name}</li>
+                <ListItem key={genre.id} paddingY="5px">
+                    <HStack>
+                        <Image
+                            boxSize="32px"
+                            borderRadius={8}
+                            src={genre.image_background}
+                        ></Image>
+                        <Text fontSize="large">{genre.name}</Text>
+                    </HStack>
+                </ListItem>
             ))}
-        </ul>
+        </List>
     );
 };
 
