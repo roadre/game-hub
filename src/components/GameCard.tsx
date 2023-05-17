@@ -1,7 +1,7 @@
 import React from "react";
 import { iGame, iFetchGamesResponse, iPlatform } from "../services/rawg";
 import { Card, CardBody, HStack, Heading, Image, Text } from "@chakra-ui/react";
-import { PlatformIconList } from "./PlatformIconList";
+import { PlatformIconList } from "./ListPlatformIcon";
 import { CriticScore } from "./CriticScore";
 import { getCroppedImageUrl } from "../services/image-urls";
 
