@@ -1,15 +1,13 @@
-import React from "react";
-import useGenres from "../hooks/useGenres";
-import { iGenres, iFetchGeneresResponse } from "../services/rawg";
+import useGenre from "../hooks/useGenre";
 
 type Props = {};
 
 const GenreList = (props: Props) => {
-    const { Genres } = useGenres();
+    const { data } = useGenre();
 
     return (
         <ul>
-            {Genres.map((genre) => (
+            {data.map((genre) => (
                 <li key={genre.id}>{genre.name}</li>
             ))}
         </ul>

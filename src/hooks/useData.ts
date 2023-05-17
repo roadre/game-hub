@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { Text } from "@chakra-ui/react";
-import { iGenres, iFetchGeneresResponse } from "../services/rawg";
 import { CanceledError } from "axios";
 
-const useGenres = () => {
-    const [Genres, setGenres] = useState<iGenres[]>([]);
+interface iFetchResponse<T> {
+    count: number ;
+    results: T[];
+}
+
+const useData = <T>(endpoint: string) => {
+    const [data, setData] = useState<T[]>([]);
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
@@ -16,11 +18,11 @@ const useGenres = () => {
         setIsLoading(true);
 
         apiClient
-            .get<iFetchGeneresResponse>("/genres", {
+            .get<iFetchResponse<T>>(endpoint, {
                 signal: controller.signal,
             })
             .then((res) => {
-                setGenres(res.data.results);
+                setData(res.data.results);
                 setIsLoading(false);
             })
             .catch((err) => {
@@ -34,7 +36,7 @@ const useGenres = () => {
         };
     }, []);
 
-    return { Genres, error, isLoading };
+    return { data, error, isLoading };
 };
 
-export default useGenres;
+export default useData;

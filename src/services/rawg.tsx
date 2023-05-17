@@ -20,7 +20,7 @@ interface iGame {
     metacritic: number;
 }
 
-interface iGenres {
+interface iGenre {
     id: number;
     name: string;
     background_image: string;
@@ -28,9 +28,9 @@ interface iGenres {
     metacritic: number;
 }
 
-interface iFetchGeneresResponse {
+interface iFetchGenresResponse {
     count: number;
-    results: iGenres[];
+    results: iGenre[];
 }
 
 interface iFetchGamesResponse {
@@ -54,7 +54,7 @@ export default { createRawgClient };
 export type {
     iGame,
     iFetchGamesResponse,
-    iGenres,
-    iFetchGeneresResponse,
+    iGenre,
+    iFetchGenresResponse,
     iPlatform,
 };
