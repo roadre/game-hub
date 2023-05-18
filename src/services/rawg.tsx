@@ -28,6 +28,11 @@ interface iGenre {
     image_background: string;
 }
 
+interface iPlatform {
+    id: number;
+    name: string;
+}
+
 interface iFetchGenresResponse {
     count: number;
     results: iGenre[];
