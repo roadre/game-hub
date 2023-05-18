@@ -5,7 +5,7 @@ import ListGenre from "./components/ListGenre";
 import { useState } from "react";
 
 function App() {
-    const [SelectedGenre, setSelectedGenre] = useState(4);
+    const [selectedGenre, setSelectedGenre] = useState(4);
 
     return (
         <Grid
@@ -23,19 +23,14 @@ function App() {
             </GridItem>
             <Show above="lg">
                 <GridItem area="aside" paddingX={5}>
-                    {SelectedGenre ? (
-                        <Button onClick={() => setSelectedGenre(0)}>
-                            Reset {SelectedGenre}
-                        </Button>
-                    ) : (
-                        ""
-                    )}
-
-                    <ListGenre onSelectGenre={setSelectedGenre}></ListGenre>
+                    <ListGenre
+                        onSelectGenre={setSelectedGenre}
+                        selectedGenre={selectedGenre}
+                    ></ListGenre>
                 </GridItem>
             </Show>
             <GridItem area="main">
-                <ListGame SelectedGenre={SelectedGenre} />
+                <ListGame SelectedGenre={selectedGenre} />
             </GridItem>
         </Grid>
     );
