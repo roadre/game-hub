@@ -6,10 +6,7 @@ import PlatformSelector from "./PlatformSelector";
 const NavBar = () => {
     return (
         <HStack justifyContent="space-between" padding="10px">
-            <HStack>
-                <Image src={logo} boxSize="60px" />
-                <PlatformSelector></PlatformSelector>
-            </HStack>
+            <Image src={logo} boxSize="60px" />
             <ColorModeSwitch></ColorModeSwitch>
         </HStack>
     );
