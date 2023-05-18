@@ -4,8 +4,12 @@ import { GameCard } from "./GameCard";
 import GameCardPlaceholder from "./GameCardPlaceholder";
 import GameCardContainer from "./GameCardContainer";
 
-const ListGame = () => {
-    const { data, error, isLoading } = useGames();
+interface Props {
+    SelectedGenre: number;
+}
+
+const ListGame = ({ SelectedGenre }: Props) => {
+    const { data, error, isLoading } = useGames(SelectedGenre);
     const skeletons = [1, 2, 3, 4, 5, 6];
 
     return (
