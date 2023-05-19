@@ -8,10 +8,11 @@ import {
     Button,
 } from "@chakra-ui/react";
 import useGenre from "../hooks/useGenre";
+import { iGenre } from "../services/rawg";
 
 interface Props {
-    onSelectGenre: (genre: number) => void;
-    selectedGenre: number;
+    onSelectGenre: (genre: iGenre | null) => void;
+    selectedGenre?: iGenre | null;
 }
 
 const ListGenre = ({ onSelectGenre, selectedGenre }: Props) => {
@@ -23,8 +24,8 @@ const ListGenre = ({ onSelectGenre, selectedGenre }: Props) => {
 
     return (
         <>
-            {selectedGenre != 0 ? (
-                <Button onClick={() => onSelectGenre(0)}>Reset</Button>
+            {selectedGenre ? (
+                <Button onClick={() => onSelectGenre(null)}>Reset</Button>
             ) : (
                 ""
             )}
@@ -39,10 +40,10 @@ const ListGenre = ({ onSelectGenre, selectedGenre }: Props) => {
                                 src={genre.image_background}
                             ></Image>
                             <Button
-                                onClick={() => onSelectGenre(genre.id)}
+                                onClick={() => onSelectGenre(genre)}
                                 fontSize="small"
                                 backgroundColor={
-                                    genre.id == selectedGenre ? "#444" : ""
+                                    genre.id == selectedGenre?.id ? "#444" : ""
                                 }
                             >
                                 {genre.name}

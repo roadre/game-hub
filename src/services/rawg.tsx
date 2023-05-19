@@ -43,6 +43,16 @@ interface iFetchGamesResponse {
     results: iGame[];
 }
 
+interface iGameQuery {
+    genre?: iGenre | null;
+    platform?: iPlatform | null;
+}
+
+interface iGameQueryRequest {
+    genres?: string | null;
+    parent_platforms?: string | null;
+}
+
 class RawgClient {
     endpoint: string;
     constructor(endpoint: string) {
@@ -62,4 +72,6 @@ export type {
     iGenre,
     iFetchGenresResponse,
     iPlatform,
+    iGameQuery,
+    iGameQueryRequest,
 };

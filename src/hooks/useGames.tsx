@@ -1,18 +1,18 @@
-import { iGame } from "../services/rawg";
+import { iGame, iGameQuery, iGameQueryRequest } from "../services/rawg";
 import useData from "./useData";
 
-const useGames = (Genre: number, selectPlatform: number) => {
-    var query = { genres: null, parent_platforms: null };
+const useGames = (gameQuery?: iGameQuery) => {
+    var query: iGameQueryRequest = {};
 
-    if (Genre > 0) {
-        query.genres = Genre;
+    if (gameQuery?.genre?.id) {
+        query.genres = gameQuery.genre.id + "";
     }
 
-    if (selectPlatform > 0) {
-        query.parent_platforms = selectPlatform;
+    if (gameQuery?.platform?.id) {
+        query.parent_platforms = gameQuery?.platform?.id + "";
     }
 
-    return useData<iGame>("/games", { params: query }, [Genre, selectPlatform]);
+    return useData<iGame>("/games", { params: query }, [gameQuery]);
 };
 
 export default useGames;
