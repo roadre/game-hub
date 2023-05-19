@@ -43,14 +43,30 @@ interface iFetchGamesResponse {
     results: iGame[];
 }
 
+export enum iOrderEnum {
+    name = "Name",
+    released = "Release Date",
+    added = "added",
+    created = "created",
+    updated = "updated",
+    rating = "rating",
+    metacritic = "metacritic",
+}
+
+interface iOrder {
+    string: iOrderEnum | null;
+}
+
 interface iGameQuery {
     genre?: iGenre | null;
     platform?: iPlatform | null;
+    order?: iOrderEnum | null;
 }
 
 interface iGameQueryRequest {
     genres?: string | null;
     parent_platforms?: string | null;
+    ordering?: iOrderEnum | null;
 }
 
 class RawgClient {
@@ -74,4 +90,5 @@ export type {
     iPlatform,
     iGameQuery,
     iGameQueryRequest,
+    iOrder,
 };

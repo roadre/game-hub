@@ -4,12 +4,11 @@ import ListGame from "./components/ListGame";
 import ListGenre from "./components/ListGenre";
 import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector";
-import { iGameQuery } from "./services/rawg";
+import { iGameQuery, iOrderEnum } from "./services/rawg";
+import SelectorOrder from "./components/SelectorOrder";
 
 function App() {
     const [gameQuery, setGameQuery] = useState<iGameQuery>({});
-    // const [selectedGenre, setSelectedGenre] = useState(4);
-    //const [selectedPlatform, setSelectedPlatform] = useState(1);
 
     return (
         <Grid
@@ -48,6 +47,16 @@ function App() {
                     }
                     selectedPlatform={gameQuery.platform}
                 ></PlatformSelector>
+                <SelectorOrder
+                    onSelectOrder={(order) =>
+                        setGameQuery(
+                            order
+                                ? { ...gameQuery, order: order as iOrderEnum }
+                                : { ...gameQuery, order: null }
+                        )
+                    }
+                    selectedOrder={gameQuery.order}
+                ></SelectorOrder>
                 <ListGame gameQuery={gameQuery} />
             </GridItem>
         </Grid>

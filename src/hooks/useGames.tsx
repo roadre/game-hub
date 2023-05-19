@@ -12,6 +12,10 @@ const useGames = (gameQuery?: iGameQuery) => {
         query.parent_platforms = gameQuery?.platform?.id + "";
     }
 
+    if (gameQuery?.order) {
+        query.ordering = gameQuery?.order;
+    }
+
     return useData<iGame>("/games", { params: query }, [gameQuery]);
 };
 
