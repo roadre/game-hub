@@ -5,24 +5,41 @@ import {
     InputGroup,
     InputRightElement,
 } from "@chakra-ui/react";
-import React from "react";
+import { useRef } from "react";
 
-interface Props {}
+import useForm from "react-hook-form";
 
-const SearchInput = (props: Props) => {
+interface Props {
+    onSearch: (searchText: string) => void;
+}
+
+const SearchInput = ({ onSearch }: Props) => {
+    const ref = useRef<HTMLInputElement>(null);
     return (
-        <HStack>
-            <InputGroup size="md">
+        <form
+            onSubmit={(event) => {
+                event.preventDefault();
+                onSearch(ref.current?.value ? ref.current?.value : "");
+                return false;
+            }}
+        >
+            <InputGroup>
                 <Input
-                    width="400px"
+                    ref={ref}
                     placeholder="Search Games"
                     borderRadius={5}
                 ></Input>
                 <InputRightElement width="4.5rem">
-                    <Button onClick={() => {}}>Search</Button>
+                    <Button
+                        onClick={() => {
+                            onSearch;
+                        }}
+                    >
+                        Search
+                    </Button>
                 </InputRightElement>
             </InputGroup>
-        </HStack>
+        </form>
     );
 };
 

@@ -61,12 +61,14 @@ interface iGameQuery {
     genre?: iGenre | null;
     platform?: iPlatform | null;
     order?: iOrderEnum | null;
+    searchText?: string | null;
 }
 
 interface iGameQueryRequest {
     genres?: string | null;
     parent_platforms?: string | null;
     ordering?: iOrderEnum | null;
+    search?: string | null;
 }
 
 class RawgClient {

@@ -16,6 +16,10 @@ const useGames = (gameQuery?: iGameQuery) => {
         query.ordering = gameQuery?.order;
     }
 
+    if (gameQuery?.searchText) {
+        query.search = gameQuery?.searchText;
+    }
+
     return useData<iGame>("/games", { params: query }, [gameQuery]);
 };
 

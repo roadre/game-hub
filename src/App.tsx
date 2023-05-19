@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import ListGame from "./components/ListGame";
 import ListGenre from "./components/ListGenre";
@@ -22,7 +22,11 @@ function App() {
             }}
         >
             <GridItem area="nav">
-                <NavBar></NavBar>
+                <NavBar
+                    onSearch={(searchText) => {
+                        setGameQuery({ ...gameQuery, searchText });
+                    }}
+                ></NavBar>
             </GridItem>
             <Show above="lg">
                 <GridItem area="aside" paddingX={5}>
