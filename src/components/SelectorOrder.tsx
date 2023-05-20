@@ -24,7 +24,7 @@ const SelectorOrder = ({ selectedOrder, onSelectOrder }: Props) => {
                         key={item}
                         onClick={(e) => onSelectOrder(item as iOrderEnum)}
                     >
-                        {iOrderEnum[item]}
+                        {item}
                     </MenuItem>
                 ))}
             </MenuList>
